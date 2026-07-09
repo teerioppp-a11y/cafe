@@ -52,4 +52,27 @@
             </div>
         </header>
 
-        <div class="pos-
+        <div class="pos-layout">
+            <div class="products-area">
+                <h3 class="section-title">เมนูกาแฟ <span>(Coffee)</span></h3>
+                <div id="coffee-list" class="product-grid"></div>
+                
+                <h3 class="section-title" style="margin-top: 20px;">เบเกอรี่ <span>(Bakery)</span></h3>
+                <div id="bakery-list" class="product-grid"></div>
+            </div>
+
+            <div class="cart-area card">
+                <h3 style="border-bottom: 2px dashed var(--border-color); padding-bottom: 10px; margin-bottom: 15px;">🛒 ตะกร้าสินค้า</h3>
+                <ul id="cart-items"></ul>
+                <div class="cart-summary">
+                    <p>ยอดรวม: <span id="total-price" style="color: var(--primary-color);">0</span> บาท</p>
+                    <p class="point-earn">จะได้รับ: <span id="earn-points">0</span> แต้ม</p>
+                    <button onclick="checkout()" id="checkout-btn" disabled>ชำระเงิน (お会計)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

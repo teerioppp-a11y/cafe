@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee POS & Bakery</title>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L630K3MRNN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <title>Matcha & Coffee POS | カフェ</title>
+    
+    <!-- เพิ่มฟอนต์สไตล์ญี่ปุ่นและไทย -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Noto+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
 
-  gtag('config', 'G-L630K3MRNN');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L630K3MRNN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-L630K3MRNN');
+    </script>
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
@@ -23,9 +28,10 @@
 <body>
     <div id="login-section" class="container active">
         <div class="login-box card">
-            <h2>☕ เข้าสู่ระบบ POS</h2>
-            <input type="email" id="email" placeholder="อีเมล" required>
-            <input type="password" id="password" placeholder="รหัสผ่าน" required>
+            <h2 style="margin-bottom: 5px;">🍵 เข้าสู่ระบบ POS</h2>
+            <p style="color: var(--subtitle-color); font-size: 0.9em; margin-bottom: 20px;">( ログイン )</p>
+            <input type="email" id="email" placeholder="อีเมล (メール)" required>
+            <input type="password" id="password" placeholder="รหัสผ่าน (パスワード)" required>
             <button onclick="login()">เข้าสู่ระบบ</button>
             <button onclick="register()" class="secondary-btn">สมัครสมาชิก</button>
             <p id="auth-msg"></p>
@@ -34,30 +40,33 @@
 
     <div id="dashboard-section" class="container hidden">
         <header class="card">
-            <h1>☕ Coffee & Bakery POS</h1>
+            <div>
+                <h1>⛩️ Minimalist Cafe POS</h1>
+                <p style="color: var(--subtitle-color); font-size: 0.9em;">( カフェのレジ )</p>
+            </div>
             <div class="header-right">
-                <span id="user-points">แต้มสะสม: 0</span>
-                <button onclick="toggleTheme()">🌓 สลับโหมด</button>
+                <span id="user-points" class="point-badge">แต้มสะสม: 0</span>
+                <button onclick="toggleTheme()" class="theme-btn">🌓 โหมด</button>
                 <button onclick="logout()" class="danger-btn">ออกจากระบบ</button>
             </div>
         </header>
 
         <div class="pos-layout">
             <div class="products-area">
-                <h3>เมนูกาแฟ (Coffee)</h3>
+                <h3 class="section-title">เมนูกาแฟ <span>(Coffee)</span></h3>
                 <div id="coffee-list" class="product-grid"></div>
                 
-                <h3>เบเกอรี่ (Bakery)</h3>
+                <h3 class="section-title" style="margin-top: 20px;">เบเกอรี่ <span>(Bakery)</span></h3>
                 <div id="bakery-list" class="product-grid"></div>
             </div>
 
             <div class="cart-area card">
-                <h3>🛒 ตะกร้าสินค้า</h3>
+                <h3 style="border-bottom: 2px dashed var(--border-color); padding-bottom: 10px; margin-bottom: 15px;">🛒 ตะกร้าสินค้า</h3>
                 <ul id="cart-items"></ul>
                 <div class="cart-summary">
-                    <p>ยอดรวม: <span id="total-price">0</span> บาท</p>
+                    <p>ยอดรวม: <span id="total-price" style="color: var(--primary-color);">0</span> บาท</p>
                     <p class="point-earn">จะได้รับ: <span id="earn-points">0</span> แต้ม</p>
-                    <button onclick="checkout()" id="checkout-btn" disabled>ชำระเงิน</button>
+                    <button onclick="checkout()" id="checkout-btn" disabled>ชำระเงิน (お会計)</button>
                 </div>
             </div>
         </div>

@@ -1,8 +1,160 @@
-/* แทนที่ส่วน .product-grid และ .product-item เดิมด้วยโค้ดชุดนี้ */
+:root {
+    /* โทนสว่าง: สไตล์คาเฟ่มูจิ สบายตา */
+    --bg-color: #F7F5F0;       
+    --text-color: #4A3C31;     
+    --subtitle-color: #8C8477; 
+    --card-bg: #FFFFFF;
+    --primary-color: #8A9A5B;  /* สีชาเขียวมัทฉะ */
+    --primary-hover: #75854C;  
+    --border-color: #E8E3D9;
+    --danger-color: #D27979;   
+}
 
+body.dark-mode {
+    /* โทนมืด: สไตล์คาเฟ่กลางคืน เรียบหรู */
+    --bg-color: #2B2A27;
+    --text-color: #F0EAD6;
+    --subtitle-color: #A6A298;
+    --card-bg: #383632;
+    --primary-color: #A3B18A;
+    --primary-hover: #B5C49A;
+    --border-color: #4A4843;
+    --danger-color: #D98888;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Noto Sans Thai', 'Noto Sans JP', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.hidden { display: none !important; }
+.active { display: flex; }
+
+.container {
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------------- Login Section ---------------- */
+#login-section {
+    justify-content: center;
+    align-items: center;
+    background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+.login-box {
+    width: 100%;
+    max-width: 380px;
+    padding: 40px 30px;
+    text-align: center;
+    border-top: 6px solid var(--primary-color);
+}
+.login-box input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+.login-box input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(138, 154, 91, 0.2);
+}
+
+/* ---------------- Components ---------------- */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    padding: 20px;
+    border: 1px solid var(--border-color);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: inherit;
+    margin: 5px;
+    transition: all 0.2s ease;
+    letter-spacing: 0.5px;
+}
+button:hover { 
+    background-color: var(--primary-hover); 
+    transform: translateY(-2px);
+}
+button:active {
+    transform: translateY(0);
+}
+button:disabled { 
+    background-color: var(--border-color); 
+    color: var(--subtitle-color);
+    cursor: not-allowed; 
+    transform: none;
+}
+
+.secondary-btn { 
+    background-color: transparent; 
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+.secondary-btn:hover { background-color: var(--bg-color); }
+.danger-btn { background-color: var(--danger-color); }
+.theme-btn { background-color: var(--text-color); }
+
+/* ---------------- Dashboard ---------------- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+header h1 { font-size: 1.5em; }
+
+.header-right { display: flex; align-items: center; gap: 10px; }
+.point-badge {
+    background-color: rgba(138, 154, 91, 0.1);
+    color: var(--primary-color);
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    border: 1px solid rgba(138, 154, 91, 0.2);
+}
+
+.pos-layout {
+    display: flex;
+    gap: 24px;
+    flex: 1;
+}
+
+.products-area { flex: 2; }
+.section-title {
+    font-size: 1.2em;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+.section-title span { color: var(--subtitle-color); font-weight: normal; font-size: 0.8em; }
+
+/* ---------------- สินค้าและรูปภาพ ---------------- */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* ปรับให้กว้างขึ้นนิดนึงเพื่อโชว์รูปสวยๆ */
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 20px;
 }
 
@@ -14,27 +166,28 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-    overflow: hidden; /* ทำให้รูปไม่ล้นขอบโค้งของหน้าต่าง */
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
 }
 
 .product-img-box {
     width: 100%;
-    height: 140px; /* ความสูงของกรอบรูป */
+    height: 140px; 
     overflow: hidden;
+    background-color: var(--border-color); /* เผื่อรูปล็อกไม่ขึ้นจะมีสีรองพื้น */
 }
 
 .product-img-box img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* ทำให้รูปเต็มกรอบพอดีไม่เบี้ยว */
-    transition: transform 0.3s ease; /* เอฟเฟกต์นุ่มๆ ตอนซูม */
+    object-fit: cover; 
+    transition: transform 0.3s ease; 
 }
 
 /* เอฟเฟกต์ตอนนำเมาส์ไปชี้ */
 .product-item:hover .product-img-box img {
-    transform: scale(1.1); /* ซูมรูปภาพนิดๆ ให้ดูมีมิติ */
+    transform: scale(1.1); 
 }
 
 .product-item:hover { 
@@ -49,14 +202,38 @@
 .product-info {
     padding: 15px;
 }
-
 .product-info h4 { 
     margin-bottom: 5px; 
     font-size: 1.05em; 
 }
-
 .product-info p { 
     color: var(--primary-color); 
     font-weight: bold; 
     font-size: 1.1em;
 }
+
+/* ---------------- Cart Area ---------------- */
+.cart-area { flex: 1; display: flex; flex-direction: column; }
+#cart-items { list-style: none; flex: 1; overflow-y: auto; margin-bottom: 15px; padding-right: 5px; }
+#cart-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95em;
+}
+.cart-summary {
+    border-top: 2px solid var(--border-color);
+    padding-top: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.point-earn { font-size: 0.8em; color: var(--primary-color); margin-bottom: 15px;}
+#checkout-btn { width: 100%; font-size: 1.1em; padding: 14px; border-radius: 10px;}
+
+/* Scrollbar Style */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--subtitle-color); }

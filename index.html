@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee POS & Bakery</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L630K3MRNN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L630K3MRNN');
+</script>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div id="login-section" class="container active">
+        <div class="login-box card">
+            <h2>☕ เข้าสู่ระบบ POS</h2>
+            <input type="email" id="email" placeholder="อีเมล" required>
+            <input type="password" id="password" placeholder="รหัสผ่าน" required>
+            <button onclick="login()">เข้าสู่ระบบ</button>
+            <button onclick="register()" class="secondary-btn">สมัครสมาชิก</button>
+            <p id="auth-msg"></p>
+        </div>
+    </div>
+
+    <div id="dashboard-section" class="container hidden">
+        <header class="card">
+            <h1>☕ Coffee & Bakery POS</h1>
+            <div class="header-right">
+                <span id="user-points">แต้มสะสม: 0</span>
+                <button onclick="toggleTheme()">🌓 สลับโหมด</button>
+                <button onclick="logout()" class="danger-btn">ออกจากระบบ</button>
+            </div>
+        </header>
+
+        <div class="pos-layout">
+            <div class="products-area">
+                <h3>เมนูกาแฟ (Coffee)</h3>
+                <div id="coffee-list" class="product-grid"></div>
+                
+                <h3>เบเกอรี่ (Bakery)</h3>
+                <div id="bakery-list" class="product-grid"></div>
+            </div>
+
+            <div class="cart-area card">
+                <h3>🛒 ตะกร้าสินค้า</h3>
+                <ul id="cart-items"></ul>
+                <div class="cart-summary">
+                    <p>ยอดรวม: <span id="total-price">0</span> บาท</p>
+                    <p class="point-earn">จะได้รับ: <span id="earn-points">0</span> แต้ม</p>
+                    <button onclick="checkout()" id="checkout-btn" disabled>ชำระเงิน</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

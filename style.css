@@ -1,28 +1,35 @@
 :root {
-    --bg-color: #f4f6f8;
-    --text-color: #333;
-    --card-bg: #ffffff;
-    --primary-color: #6b4e31;
-    --primary-hover: #523a24;
-    --border-color: #ddd;
+    /* โทนสว่าง: สไตล์คาเฟ่มูจิ สบายตา */
+    --bg-color: #F7F5F0;       /* สีครีมกระดาษ */
+    --text-color: #4A3C31;     /* สีน้ำตาลเข้มลายไม้ */
+    --subtitle-color: #8C8477; 
+    --card-bg: #FFFFFF;
+    --primary-color: #8A9A5B;  /* สีชาเขียวมัทฉะ */
+    --primary-hover: #75854C;  
+    --border-color: #E8E3D9;
+    --danger-color: #D27979;   /* สีแดงอิฐซอฟต์ๆ */
 }
 
 body.dark-mode {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --card-bg: #1e1e1e;
-    --primary-color: #d4a373;
-    --primary-hover: #e6b88a;
-    --border-color: #333;
+    /* โทนมืด: สไตล์คาเฟ่กลางคืน เรียบหรู */
+    --bg-color: #2B2A27;
+    --text-color: #F0EAD6;
+    --subtitle-color: #A6A298;
+    --card-bg: #383632;
+    --primary-color: #A3B18A;
+    --primary-hover: #B5C49A;
+    --border-color: #4A4843;
+    --danger-color: #D98888;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* ใช้ฟอนต์ที่อ่านง่ายและดูเป็นระเบียบ */
+    font-family: 'Noto Sans Thai', 'Noto Sans JP', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .hidden { display: none !important; }
@@ -35,91 +42,150 @@ body {
     flex-direction: column;
 }
 
-/* Login */
+/* ---------------- Login Section ---------------- */
 #login-section {
     justify-content: center;
     align-items: center;
+    background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+    background-size: 20px 20px;
 }
 .login-box {
     width: 100%;
-    max-width: 400px;
-    padding: 30px;
+    max-width: 380px;
+    padding: 40px 30px;
     text-align: center;
+    border-top: 6px solid var(--primary-color); /* ขอบด้านบนสีมัทฉะ */
 }
 .login-box input {
     width: 100%;
-    padding: 10px;
+    padding: 12px 15px;
     margin: 10px 0;
     border: 1px solid var(--border-color);
-    border-radius: 5px;
+    border-radius: 8px;
     background: var(--bg-color);
     color: var(--text-color);
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+.login-box input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(138, 154, 91, 0.2);
 }
 
-/* Components */
+/* ---------------- Components ---------------- */
 .card {
     background-color: var(--card-bg);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
     padding: 20px;
+    border: 1px solid var(--border-color);
 }
 
 button {
     background-color: var(--primary-color);
     color: #fff;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 12px 16px;
+    border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 500;
+    font-family: inherit;
     margin: 5px;
+    transition: all 0.2s ease;
+    letter-spacing: 0.5px;
 }
-button:hover { background-color: var(--primary-hover); }
-button:disabled { background-color: #ccc; cursor: not-allowed; }
-.secondary-btn { background-color: #555; }
-.danger-btn { background-color: #dc3545; }
+button:hover { 
+    background-color: var(--primary-hover); 
+    transform: translateY(-2px);
+}
+button:active {
+    transform: translateY(0);
+}
+button:disabled { 
+    background-color: var(--border-color); 
+    color: var(--subtitle-color);
+    cursor: not-allowed; 
+    transform: none;
+}
 
-/* Dashboard */
+.secondary-btn { 
+    background-color: transparent; 
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+.secondary-btn:hover { background-color: var(--bg-color); }
+.danger-btn { background-color: var(--danger-color); }
+.theme-btn { background-color: var(--text-color); }
+
+/* ---------------- Dashboard ---------------- */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
-.header-right { display: flex; align-items: center; gap: 15px; font-weight: bold; }
+header h1 { font-size: 1.5em; }
+
+.header-right { display: flex; align-items: center; gap: 10px; }
+.point-badge {
+    background-color: rgba(138, 154, 91, 0.1);
+    color: var(--primary-color);
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    border: 1px solid rgba(138, 154, 91, 0.2);
+}
 
 .pos-layout {
     display: flex;
-    gap: 20px;
+    gap: 24px;
     flex: 1;
 }
 
 .products-area { flex: 2; }
+.section-title {
+    font-size: 1.2em;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+.section-title span { color: var(--subtitle-color); font-weight: normal; font-size: 0.8em; }
+
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 15px;
-    margin: 15px 0 30px 0;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
 }
 
 .product-item {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 15px;
+    border-radius: 12px;
+    padding: 20px 15px;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.1s;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
 }
-.product-item:active { transform: scale(0.95); }
+.product-item h4 { margin-bottom: 5px; }
+.product-item p { color: var(--primary-color); font-weight: bold; }
+.product-item:hover { 
+    transform: translateY(-4px); 
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 20px rgba(138, 154, 91, 0.1);
+}
+.product-item:active { transform: scale(0.96); }
 
 .cart-area { flex: 1; display: flex; flex-direction: column; }
-#cart-items { list-style: none; flex: 1; overflow-y: auto; margin-bottom: 15px; }
+#cart-items { list-style: none; flex: 1; overflow-y: auto; margin-bottom: 15px; padding-right: 5px; }
 #cart-items li {
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
+    align-items: center;
+    padding: 12px 0;
     border-bottom: 1px solid var(--border-color);
+    font-size: 0.95em;
 }
 .cart-summary {
     border-top: 2px solid var(--border-color);
@@ -127,5 +193,11 @@ header {
     font-size: 1.2em;
     font-weight: bold;
 }
-.point-earn { font-size: 0.8em; color: #28a745; margin-bottom: 10px;}
-#checkout-btn { width: 100%; font-size: 1.1em; padding: 12px; }
+.point-earn { font-size: 0.8em; color: var(--primary-color); margin-bottom: 15px;}
+#checkout-btn { width: 100%; font-size: 1.1em; padding: 14px; border-radius: 10px;}
+
+/* Scrollbar Style */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--subtitle-color); }

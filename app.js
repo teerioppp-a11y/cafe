@@ -1,7 +1,7 @@
 // --- นำ URL และ Anon Key จาก Supabase มาใส่ตรงนี้ ---
-const SUPABASE_URL = 'https://tyvbsgonfticxuaggzgb.supabase.co';
+const SUPABASE_URL = 'https://lsyofqawzztamcdhktzt.supabase.co';
 // ⚠️ อย่าลืมเอาคีย์ยาวๆ ของคุณ (anon public) มาใส่แทนที่คำว่า 'YOUR_ANON_KEY' ตรงนี้ด้วยนะครับ!
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR5dmJzZ29uZnRpY3h1YWdnemdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM1NjgwMTgsImV4cCI6MjA5OTE0NDAxOH0.IZWsX-ChzMrhMvsnSp3AdglRNfZQoYctzw5NhBLg-VM'; 
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxzeW9mcWF3enp0YW1jZGhrdHp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM1ODQ0MjAsImV4cCI6MjA5OTE2MDQyMH0.6ijHGC-Cn_d5EfeoshtGYVUlpQJqgInH72sP9HU3-XY'; 
 
 // แก้ไขปัญหาการประกาศตัวแปรซ้ำซ้อนกับระบบ Global SDK เรียบร้อยแล้ว
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
